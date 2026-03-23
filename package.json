@@ -1,0 +1,28 @@
+{
+  "name": "cse341-project2",
+  "version": "1.0.0",
+  "description": "My Second Project",
+  "homepage": "https://github.com/Joka7w7/CSE341-Project2#readme",
+  "bugs": {
+    "url": "https://github.com/Joka7w7/CSE341-Project2/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joka7w7/CSE341-Project2.git"
+  },
+  "license": "ISC",
+  "author": "Jose Chanax",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "mongodb": "^7.1.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
