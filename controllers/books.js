@@ -6,7 +6,7 @@ const validateBook = (book) => {
   const requiredFields = [
     'title', 'author', 'genre',
     'publishedYear', 'pages',
-    'language', 'rating'
+    'language', 'publisher', 'isbn', 'available'
   ];
 
   return requiredFields.every(field => book[field]);

@@ -3,7 +3,7 @@ const ObjectId = require('mongodb').ObjectId;
 
 // validation
 const validateAuthor = (author) => {
-  const requiredFields = ['name', 'nationality', 'birthYear', 'genre'];
+  const requiredFields = ['name', 'nationality', 'birthYear', 'genre', 'notableWork', 'awards', 'alive'];
   return requiredFields.every(field => author[field]);
 };
 
