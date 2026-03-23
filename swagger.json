@@ -1,11 +1,11 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Contacts API",
-    "description": "Contacts API",
+    "title": "Books API",
+    "description": "Books API",
     "version": "1.0.0"
   },
-  "host": "cse341-project1-8qb2.onrender.com",
+  "host": "cse341-project2-473b.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
@@ -24,10 +24,10 @@
         }
       }
     },
-    "/contacts/": {
+    "/books/": {
       "get": {
         "tags": [
-          "Contacts"
+          "Books"
         ],
         "description": "",
         "produces": [
@@ -41,7 +41,7 @@
       },
       "post": {
         "tags": [
-          "Contacts"
+          "Books"
         ],
         "description": "",
         "parameters": [
@@ -80,10 +80,10 @@
         }
       }
     },
-    "/contacts/{id}": {
+    "/books/{id}": {
       "get": {
         "tags": [
-          "Contacts"
+          "Books"
         ],
         "description": "",
         "produces": [
@@ -105,7 +105,7 @@
       },
       "put": {
         "tags": [
-          "Contacts"
+          "Books"
         ],
         "description": "",
         "parameters": [
@@ -151,7 +151,7 @@
       },
       "delete": {
         "tags": [
-          "Contacts"
+          "Books"
         ],
         "description": "",
         "parameters": [
