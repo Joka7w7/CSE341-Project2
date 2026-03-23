@@ -48,8 +48,8 @@
                 "genre": { "example": "Programming" },
                 "publishedYear": { "example": 2008 },
                 "pages": { "example": 464 },
-                "language": { "example": "English" },
-                "rating": { "example": 4.7 }
+                "isbn": { "example": "978-0132350884" },
+                "available": { "example": true }
               }
             }
           }
@@ -112,8 +112,8 @@
                 "genre": { "example": "Programming" },
                 "publishedYear": { "example": 2008 },
                 "pages": { "example": 464 },
-                "language": { "example": "English" },
-                "rating": { "example": 4.7 }
+                "isbn": { "example": "978-0132350884" },
+                "available": { "example": true }
               }
             }
           }
@@ -178,7 +178,9 @@
                 "nationality": { "example": "American" },
                 "birthYear": { "example": 1986 },
                 "genre": { "example": "Self-help" },
-                "awards": { "example": "Goodreads Choice Award" }
+                "notableWorks": { "example": "Atomic Habits" },
+                "awards": { "example": "Goodreads Choice Award" },
+                "alive": { "example": true }
               }
             }
           }
@@ -239,7 +241,9 @@
                 "nationality": { "example": "American" },
                 "birthYear": { "example": 1986 },
                 "genre": { "example": "Self-help" },
-                "awards": { "example": "Goodreads Choice Award" }
+                "notableWorks": { "example": "Atomic Habits" },
+                "awards": { "example": "Goodreads Choice Award" },
+                "alive": { "example": true }
               }
             }
           }
