@@ -182,7 +182,7 @@
                 "nationality": { "example": "American" },
                 "birthYear": { "example": 1986 },
                 "genre": { "example": "Self-help" },
-                "notableWorks": { "example": "Atomic Habits" },
+                "notableWork": { "example": "Atomic Habits" },
                 "awards": { "example": "Goodreads Choice Award" },
                 "alive": { "example": true }
               }
@@ -245,7 +245,7 @@
                 "nationality": { "example": "American" },
                 "birthYear": { "example": 1986 },
                 "genre": { "example": "Self-help" },
-                "notableWorks": { "example": "Atomic Habits" },
+                "notableWork": { "example": "Atomic Habits" },
                 "awards": { "example": "Goodreads Choice Award" },
                 "alive": { "example": true }
               }
