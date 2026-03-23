@@ -48,6 +48,8 @@
                 "genre": { "example": "Programming" },
                 "publishedYear": { "example": 2008 },
                 "pages": { "example": 464 },
+                "language": { "example": "English" },
+                "publisher": { "example": "Prentice Hall" },
                 "isbn": { "example": "978-0132350884" },
                 "available": { "example": true }
               }
@@ -112,6 +114,8 @@
                 "genre": { "example": "Programming" },
                 "publishedYear": { "example": 2008 },
                 "pages": { "example": 464 },
+                "language": { "example": "English" },
+                "publisher": { "example": "Prentice Hall" },
                 "isbn": { "example": "978-0132350884" },
                 "available": { "example": true }
               }
