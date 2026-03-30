@@ -1,6 +1,20 @@
 const express = require('express');
 const mongodb = require('./data/database');
 const app = express();
+const session = require('express-session');
+const passport = require('passport');
+
+// Session
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true
+}));
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.use(express.json());
 const port = process.env.PORT || 3000;
