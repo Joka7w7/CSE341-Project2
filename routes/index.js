@@ -13,7 +13,7 @@ router.use('/authors', require('./authors'));
 
 router.get('/login', passport.authenticate('github', { scope: ['user'] }), (req, res) => {});
 
-router.get('/logout', function(req, res, next) { // ✅ fixed missing leading /
+router.get('/logout', function(req, res, next) {
   req.logout(function(err) {
     if (err) { return next(err); }
     res.redirect('/');

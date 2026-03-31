@@ -9,7 +9,7 @@ const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// ✅ 1. CORS and headers FIRST — before any routes
+// CORS and headers FIRST — before any routes
 app.use(cors({ origin: '*', methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH'] }));
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -22,11 +22,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// ✅ 2. Body parsing
+// Body parsing
 app.use(express.json());
 app.use(bodyParser.json());
 
-// ✅ 3. Session + Passport
+// Session + Passport
 app.use(session({
   secret: 'your_secret_key',
   resave: false,
@@ -35,7 +35,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// ✅ 4. GitHub Strategy
+// GitHub Strategy
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
@@ -48,7 +48,7 @@ function(accessToken, refreshToken, profile, done) {
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((user, done) => done(null, user));
 
-// ✅ 5. Root and GitHub callback routes
+// Root and GitHub callback routes
 app.get('/', (req, res) => {
   res.send(req.session.user !== undefined
     ? `Logged in as ${req.session.user.displayName}`
@@ -63,7 +63,7 @@ app.get('/github/callback',
   }
 );
 
-// ✅ 6. All other routes LAST — only mounted once
+// All other routes LAST — only mounted once
 const routes = require('./routes');
 app.use('/', routes);
 
