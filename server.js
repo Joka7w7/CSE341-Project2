@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const session = require('express-session');
 const GitHubStrategy = require('passport-github2').Strategy;
+console.log('CALLBACK URL:', process.env.GITHUB_CALLBACK_URL);
 const cors = require('cors');
 
 const app = express();
