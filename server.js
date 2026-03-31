@@ -1,37 +1,71 @@
 const express = require('express');
 const mongodb = require('./data/database');
-const app = express();
-const session = require('express-session');
+const bodyParser = require('body-parser');
 const passport = require('passport');
+const session = require('express-session');
+const GitHubStrategy = require('passport-github2').Strategy;
+const cors = require('cors');
 
-// Session
-app.use(session({
-  secret: 'secret',
-  resave: false,
-  saveUninitialized: true
-}));
-
-// Passport
-app.use(passport.initialize());
-app.use(passport.session());
-
-
-app.use(express.json());
+const app = express();
 const port = process.env.PORT || 3000;
 
-const routes = require('./routes');
-app.use('/', routes);
-
+// ✅ 1. CORS and headers FIRST — before any routes
+app.use(cors({ origin: '*', methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH'] }));
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
-    'Access-Control-Allow-Methods',
-    'Origin, X-Requested-With, Content-Type, Accept, Z-key'
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization"
   );
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, PATCH, DELETE, OPTIONS");
+  if (req.method === 'OPTIONS') return res.sendStatus(200); // ✅ handle preflight
   next();
 });
 
+// ✅ 2. Body parsing
+app.use(express.json());
+app.use(bodyParser.json());
+
+// ✅ 3. Session + Passport
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// ✅ 4. GitHub Strategy
+passport.use(new GitHubStrategy({
+  clientID: process.env.GITHUB_CLIENT_ID,
+  clientSecret: process.env.GITHUB_CLIENT_SECRET,
+  callbackURL: process.env.GITHUB_CALLBACK_URL
+},
+function(accessToken, refreshToken, profile, done) {
+  return done(null, profile);
+}));
+
+passport.serializeUser((user, done) => done(null, user));
+passport.deserializeUser((user, done) => done(null, user));
+
+// ✅ 5. Root and GitHub callback routes
+app.get('/', (req, res) => {
+  res.send(req.session.user !== undefined
+    ? `Logged in as ${req.session.user.displayName}`
+    : 'Logged Out');
+});
+
+app.get('/github/callback',
+  passport.authenticate('github', { failureRedirect: '/api-docs' }),
+  (req, res) => {
+    req.session.user = req.user;
+    res.redirect('/');
+  }
+);
+
+// ✅ 6. All other routes LAST — only mounted once
+const routes = require('./routes');
+app.use('/', routes);
 
 mongodb.initDb((err) => {
   if (err) {

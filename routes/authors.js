@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authorsController = require('../controllers/authors');
-const isAuthenticated = require('../middleware/auth');
+const { isAuthenticated } = require('../middleware/authenticate');
 
 // GET all
 router.get('/', authorsController.getAll);

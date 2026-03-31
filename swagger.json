@@ -285,21 +285,5 @@
         }
       }
     }
-  },
-  "securityDefinitions": {
-    "oauth2": {
-      "type": "oauth2",
-      "flow": "accessCode",
-      "authorizationUrl": "https://cse341-project2-473b.onrender.com/auth/google",
-      "tokenUrl": "https://cse341-project2-473b.onrender.com/auth/google/callback",
-      "scopes": {
-        "profile": "Access user profile"
-      }
-    }
-  },
-  "security": [
-    {
-      "oauth2": []
-    }
-  ]
+  }
 }

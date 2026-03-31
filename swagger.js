@@ -1,12 +1,16 @@
 const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
-    info: {
-        title: 'Library API',
-        description: 'API for managing books and authors',
-    },
-    host: 'localhost:3000',
-    schemes: ['http', 'https']
+  info: {
+    title: 'Library API',
+    description: 'API for managing books and authors',
+    version: '1.0.0'
+  },
+  host: process.env.NODE_ENV === 'production'
+    ? 'cse341-project2-473b.onrender.com'
+    : 'localhost:3000',
+  schemes: process.env.NODE_ENV === 'production' ? ['https'] : ['http'],
+  basePath: '/'
 };
 
 const outputFile = './swagger.json';
